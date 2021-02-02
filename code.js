@@ -44,19 +44,18 @@ $("#search-button").on("click", function (event) {
 
         //2) a function that will use our response from openweathermap to create the "current weather" section of our HTML
         function showWeather(response) {
-            debugger;
-            console.log("please work" + response);
 
                 var title = $("<h2>").addClass("card-title").text(response.name);
                 var card = $("<div>").addClass("card");
                 var wind = $("<p>").addClass("card-text").text("Wind speed is: " + response.wind.speed + " MPH");
                 var humidity = $("<p>").addClass("card-text").text("The humidity is: " + response.main.humidity + " %");
                 var temp = $("<p>").addClass("card-text").text("The temperature is: " + response.main.temp);
+                var uvIndex  = $("<p>").addClass("card-text").text("The UV Index is:");
                 var cardBody = $("<div>").addClass("card-body");
                 var image = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
 
                 title.append(image);
-                cardBody.append(title, wind, humidity, temp);
+                cardBody.append(title, wind, humidity, temp, uvIndex);
                 card.append(cardBody);
                 $("#current").append(card);
     }
