@@ -1,17 +1,17 @@
 # Earth-Wind-and-Water
 
-1. Create an html page that has the following:
-   - a header
-   - a cntainer for the row the can be broken into three sections
-   - one for thr search input form
-   - one for the current days forecast
-   - one for the 5 day forecast
-2. CSS for anything that needs last minute tweaking 
-3. JS/Jquery will begin with linking the search buttons with the first API that will collect information through the weather site to find the city of the users choosing 
-4. Second API will be the same but to extract data from JSON to give the user the humidity level, temperature, wind level and UV index (which will cahnage colors depending on the level)
-5. Third API will be for a 5-day foecast that will ne presented in the third div of the container
-6.
-7.
-8.
-9.
-10.
+## Description
+
+   This application was created to help the user search for a city of their choosing, then that search will provide the user with the current day forecast, along with a 5-day forecast. This will include the days temperature, wind speed, humidity and uv index. 
+
+## Deployed Site
+
+   https://github.com/Tylergilbert913/Earth-Wind-and-Air.git
+
+## Usage
+
+   1. The user enters the site.
+   2. The user then types in the city of their choosing and click the search button, then the users search will be logged and presented below the search.
+   3. This will then provide the user with the current day forecast, along with a 5-day forecast.
+   4. The current days forecast will consist of the humidity, wind speed, uv index and the temperature.
+   5. The 5-day forecast will consist of the date, temperature and humidity.
