@@ -1,7 +1,8 @@
+// on click for the city search button
 $("#search-button").on("click", function (event) {
     event.preventDefault();
 
-    var city = $("#search-value").val();
+    var city = $("#searchInput").val();
 
     var queryURL =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -21,7 +22,7 @@ $("#search-button").on("click", function (event) {
         if (hList === null) {
             hList = [];
         }
-
+        // the city, along with the data are pushed to the localStorage
         hList.push(city);
         localStorage.setItem("historyList", JSON.stringify(hList));
         console.log("Your cities selections: " + hList);
@@ -29,8 +30,7 @@ $("#search-button").on("click", function (event) {
 
 
 
-        //Things we need now:
-        //1) a function that will take in our array of city names and loop through it to create the history section of our HTML
+        // function looping through the search buttons array
         function cityList(hList) {
             $("#cityDump").empty();
             for (var i = 0; i < hList.length; i++) {
@@ -42,23 +42,23 @@ $("#search-button").on("click", function (event) {
             }
         }
 
-        //2) a function that will use our response from openweathermap to create the "current weather" section of our HTML
+        // function that takes in data from the weather API to create a current day forecast
         function showWeather(response) {
 
-                var title = $("<h2>").addClass("card-title").text(response.name);
-                var card = $("<div>").addClass("card");
-                var wind = $("<p>").addClass("card-text").text("Wind speed is: " + response.wind.speed + " MPH");
-                var humidity = $("<p>").addClass("card-text").text("The humidity is: " + response.main.humidity + " %");
-                var temp = $("<p>").addClass("card-text").text("The temperature is: " + response.main.temp);
-                var uvIndex  = $("<p>").addClass("card-text").text("The UV Index is:");
-                var cardBody = $("<div>").addClass("card-body");
-                var image = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-
-                title.append(image);
-                cardBody.append(title, wind, humidity, temp, uvIndex);
-                card.append(cardBody);
-                $("#current").append(card);
-    }
+            var title = $("<h2>").addClass("card-title").text(response.name);
+            var card = $("<div>").addClass("card");
+            var wind = $("<p>").addClass("card-text").text("Wind speed is: " + response.wind.speed + " MPH");
+            var humidity = $("<p>").addClass("card-text").text("The humidity is: " + response.main.humidity + " %");
+            var temp = $("<p>").addClass("card-text").text("The temperature is: " + response.main.temp);
+            var uvIndex = $("<p>").addClass("card-text").text("The UV Index is:");
+            var cardBody = $("<div>").addClass("card-body");
+            var image = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            // appends all elements to html
+            title.append(image);
+            cardBody.append(title, wind, humidity, temp, uvIndex);
+            card.append(cardBody);
+            $("#current").append(card);
+        }
     });
 });
 
