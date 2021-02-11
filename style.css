@@ -6,3 +6,13 @@
   background-color: rgb(94, 91, 91);
   color: rgb(240, 235, 235);
 }
+#forecast {
+  /* float: right; */
+  height: 400px;
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
+#card {
+  background-color: rgb(83, 130, 231);
+}
