@@ -18,8 +18,8 @@ $("#search-button").on("click", function (event) {
         //display weather from response
         showWeather(response);
         fiveDay(city);
-        
-        
+
+
 
         //push to history
         if (hList === null) {
@@ -28,7 +28,7 @@ $("#search-button").on("click", function (event) {
         // the city, along with the data are pushed to the localStorage
         hList.push(city);
         localStorage.setItem("historyList", JSON.stringify(hList));
-        console.log("Your cities selections: " + hList);
+        // console.log("Your cities selections: " + hList);
         cityList(hList);
 
 
@@ -52,18 +52,19 @@ $("#search-button").on("click", function (event) {
             var card = $("<div>").addClass("card");
             var wind = $("<p>").addClass("card-text").text("Wind speed is: " + response.wind.speed + " MPH");
             var humidity = $("<p>").addClass("card-text").text("The humidity is: " + response.main.humidity + " %");
-            var uvi = $("<p>").addClass("card-text").text("The UV Index is: 4.53")
+            // var uvi = $("<p>").addClass("card-text").text("The UV Index is: 4.53")
+            uvIndex(response.coord.lat, response.coord.lon);
             var temp = $("<p>").addClass("card-text").text("The temperature is: " + response.main.temp);
             var cardBody = $("<div>").addClass("card-body");
             var image = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
             // appends all elements to html
             title.append(image);
-            cardBody.append(title, wind, humidity, uvi, temp);
+            cardBody.append(title, wind, humidity, temp);
             card.append(cardBody);
             $("#current").append(card);
 
         }
-        uvIndex(lat, lon);
+        
     });
 });
 
@@ -71,21 +72,24 @@ $("#search-button").on("click", function (event) {
 
 function uvIndex(lat, lon) {
     console.log("how much" + lat + lon);
+
+
+
+    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=941abf696ec63ce79f180b076b8c17c5&lat=" + lat + "&lon=" + lon;
+
+
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+        console.log("data", response);
+
+        var uvi = $("<p>").addClass("card-text").text("The UV Index is: " + response.value);
+
+        $("#current").append(uvi);
+
+    });
 }
-
-
-var queryURL = "https://api.openweathermap.org/data/2.5/uvi?&latq=" + lat + "&lon" + lon + "&apikey=941abf696ec63ce79f180b076b8c17c5";
-
-$.ajax({
-    url: queryURL,
-    method: "GET",
-}).then(function (response) {
-    console.log("is this working for me: " + response);
-
-    var uvi = $("<p>").addClass("card-text").text("The UV Index is: " + response.current.uvi);
-
-    $("#current").append(uvi);
-});
 
 
 
@@ -95,9 +99,9 @@ $.ajax({
 
 
 function fiveDay(city) {
-    console.log(city);
+    // console.log(city);
 
-   
+
 
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&apikey=941abf696ec63ce79f180b076b8c17c5";
 
@@ -105,10 +109,10 @@ function fiveDay(city) {
         url: queryURL,
         method: "GET",
     }).then(function (response) {
-      
+
 
         for (var i = 35; i < response.list.length; i++) {
-            console.log("is this working:" + city)
+            // console.log("is this working 2:" + city)
 
             var box = $("<div>").addClass("col-lg-2");
             var card = $("<div>").addClass("card").attr("style", "background-color: rgb(83, 130, 231)");
@@ -119,12 +123,12 @@ function fiveDay(city) {
             var temp = $("<p>").text("Today's temperature; " + response.list[i].main.temp_max);
             var humidity = $("<p>").text("Today's humidity: " + response.list[i].main.humidity + "%");
 
-           title.append(image, title);
-           body.append(card);
-           card.append(city, title, temp, humidity);
-           box.append(card); 
-           $("#forecast").append(box);
-           
+            title.append(image, title);
+            body.append(card);
+            card.append(city, title, temp, humidity);
+            box.append(card);
+            $("#forecast").append(box);
+
         }
     });
 }
