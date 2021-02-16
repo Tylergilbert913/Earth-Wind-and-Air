@@ -75,14 +75,13 @@ function uvIndex(lat, lon) {
 
 
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=941abf696ec63ce79f180b076b8c17c5&lat=" + lat + "&lon=" + lon;
-
-
+    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=941abf696ec63ce79f180b076b8c17c5=" + lat + "&lon=" + lon;
+debugger;
     $.ajax({
         url: queryURL,
         method: "GET",
     }).then(function (response) {
-        console.log("data", response);
+        console.log(response);
 
         var uvi = $("<p>").addClass("card-text").text("The UV Index is: " + response.value);
 
