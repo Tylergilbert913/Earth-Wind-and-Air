@@ -63,8 +63,9 @@ $("#search-button").on("click", function (event) {
 });
 
 function getUVIndex(lat, lon) {
+    console.log("Your lat and lon", + lat + lon);
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=7ba67ac190f85fdba2e2dc6b9d32e93c&lat=" + lat + "&lon=" + lon;
+    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=941abf696ec63ce79f180b076b8c17c5&lat=" + lat + "&lon=" + lon;
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -80,7 +81,7 @@ function getUVIndex(lat, lon) {
             btn.addClass("btn-warning");
         }
         else {
-            btn.addClass("btn-dangeresponse")
+            btn.addClass("btn-dangeresponse");
         }
 
         $("#current").append(uv.append(btn));
