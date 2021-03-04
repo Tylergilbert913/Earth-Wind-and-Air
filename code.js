@@ -58,7 +58,7 @@ $("#search-button").on("click", function (event) {
             $("#current").append(card);
 
         }
-
+        getUVIndex(response.coord.lat, response.coord.lon);
     });
 });
 
