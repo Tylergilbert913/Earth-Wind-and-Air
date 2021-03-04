@@ -9,6 +9,10 @@ https://opensource.org/licenses/MIT
 ## Description 
     
 This is a user-friendly weather dahsboard in which you input a city and the app will then return the current day forecast and a five-day forecast of that city.
+
+## Deployed Site
+
+https://tylergilbert913.github.io/Earth-Wind-and-Air/
     
 ## Table of Contents
     
