@@ -1,17 +1,52 @@
-# Earth-Wind-and-Water
 
-## Description
+    
+# Earth Wind and Water
+    
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-   This application was created to help the user search for a city of their choosing, then that search will provide the user with the current day forecast, along with a 5-day forecast. This will include the days temperature, wind speed, humidity and uv index. 
-
-## Deployed Site
-
-   https://github.com/Tylergilbert913/Earth-Wind-and-Air.git
-
-## Usage
-
-   1. The user enters the site.
-   2. The user then types in the city of their choosing and click the search button, then the users search will be logged and presented below the search.
-   3. This will then provide the user with the current day forecast, along with a 5-day forecast.
-   4. The current days forecast will consist of the humidity, wind speed, uv index and the temperature.
-   5. The 5-day forecast will consist of the date, temperature and humidity.
+https://opensource.org/licenses/MIT
+    
+## Description 
+    
+This is a user-friendly weather dahsboard in which you input a city and the app will then return the current day forecast and a five-day forecast of that city.
+    
+## Table of Contents
+    
+* [Installation](#installation)
+    
+* [Usage](#usage)
+    
+* [Contributors](#contributing)
+    
+* [Testing](#test)
+    
+* [License](#license)
+    
+## Installation Instructions
+    
+NONE
+    
+## Usage Information 
+    
+Simply search for a city of the users liking.
+    
+## Contributors 
+    
+NONE
+    
+## Testing Instructions 
+    
+NONE
+    
+## License
+    
+MIT
+    
+## Github Username
+    
+https://github.com/Tylergilbert913
+    
+## Email
+    
+Tyler.gilbert913@gmail.com
+    
