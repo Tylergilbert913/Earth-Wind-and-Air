@@ -66,7 +66,7 @@ $("#search-button").on("click", function (event) {
 function getUVIndex(lat, lon) {
     console.log("Your lat and lon", + lat + lon);
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=941abf696ec63ce79f180b076b8c17c5&lat=" + lat + "&lon=" + lon;
+    var queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=941abf696ec63ce79f180b076b8c17c5" + "&lat=" + lat + "&lon=" + lon;
     $.ajax({
         url: queryURL,
         method: "GET",
