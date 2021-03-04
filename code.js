@@ -90,7 +90,7 @@ function getUVIndex(lat, lon) {
 };
 
 
-// function for 5-day forecast
+// function for 5-day forecast 
 
 function fiveDay(city) {
     console.log(city);
