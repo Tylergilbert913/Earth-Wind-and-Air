@@ -4,10 +4,7 @@ $("#search-button").on("click", function (event) {
 
     var city = $("#searchInput").val();
 
-    var queryURL =
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-        city +
-        "&apikey=941abf696ec63ce79f180b076b8c17c5";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&apikey=941abf696ec63ce79f180b076b8c17c5";
 
     $.ajax({
         url: queryURL,
@@ -28,7 +25,7 @@ $("#search-button").on("click", function (event) {
         // the city, along with the data are pushed to the localStorage
         hList.push(city);
         localStorage.setItem("historyList", JSON.stringify(hList));
-        // console.log("Your cities selections: " + hList);
+        console.log("Your cities selections: " + hList);
         cityList(hList);
 
 
@@ -52,79 +49,49 @@ $("#search-button").on("click", function (event) {
             var card = $("<div>").addClass("card");
             var wind = $("<p>").addClass("card-text").text("Wind speed is: " + response.wind.speed + " MPH");
             var humidity = $("<p>").addClass("card-text").text("The humidity is: " + response.main.humidity + " %");
-            // var uvi = $("<p>").addClass("card-text").text("The UV Index is: 4.53")
-            uvIndex(response.coord.lat, response.coord.lon);
             var temp = $("<p>").addClass("card-text").text("The temperature is: " + response.main.temp);
             var cardBody = $("<div>").addClass("card-body");
             var image = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-            // appends all elements to html
             title.append(image);
             cardBody.append(title, wind, humidity, temp);
             card.append(cardBody);
             $("#current").append(card);
 
         }
-        
+
     });
 });
 
-
-
-// function uvIndex(lat, lon) {
-//     console.log("how much" + lat + lon);
-
-
-
-//     var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=941abf696ec63ce79f180b076b8c17c5=" + lat + "&lon=" + lon;
-// debugger;
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET",
-//     }).then(function (response) {
-//         console.log(response);
-
-//         var uvi = $("<p>").addClass("card-text").text("The UV Index is: " + response.value);
-
-//         $("#current").append(uvi);
-
-//     });
-// }
-
 function getUVIndex(lat, lon) {
+
+    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=7ba67ac190f85fdba2e2dc6b9d32e93c&lat=" + lat + "&lon=" + lon;
     $.ajax({
-      type: "GET",
-      url: "https://api.openweathermap.org/data/2.5/uvi?appid=42098b4fee68f13425641d4f765d4214&lat=" + lat + "&lon=" + lon,
-      dataType: "json",
-      success: function(data) {
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
         var uv = $("<p>").text("UV Index: ");
-        var btn = $("<span>").addClass("btn btn-sm").text(data.value);
-        
+        var btn = $("<span>").addClass("btn btn-sm").text(response.value);
+
         // change color depending on uv value
-        if (data.value < 3) {
-          btn.addClass("btn-success");
+        if (response.value < 3) {
+            btn.addClass("btn-success");
         }
-        else if (data.value < 7) {
-          btn.addClass("btn-warning");
+        else if (response.value < 7) {
+            btn.addClass("btn-warning");
         }
         else {
-          btn.addClass("btn-danger");
+            btn.addClass("btn-dangeresponse")
         }
-        
-        $("#today .card-body").append(uv.append(btn));
-      }
+
+        $("#current").append(uv.append(btn));
     });
-  }
-
-
-
+};
 
 
 
 
 function fiveDay(city) {
-    // console.log(city);
-
-
+    console.log(city);
 
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&apikey=941abf696ec63ce79f180b076b8c17c5";
 
@@ -135,7 +102,7 @@ function fiveDay(city) {
 
 
         for (var i = 35; i < response.list.length; i++) {
-            // console.log("is this working 2:" + city)
+            console.log("is this working 2:" + city)
 
             var box = $("<div>").addClass("col-lg-2");
             var card = $("<div>").addClass("card").attr("style", "background-color: rgb(83, 130, 231)");
@@ -157,4 +124,3 @@ function fiveDay(city) {
 }
 
 
-//5) IF the "one call API " does not return UVI info, then we will need yet another ajax call to get that information
