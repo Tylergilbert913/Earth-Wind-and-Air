@@ -13,9 +13,11 @@
   display: flex;
   justify-content: space-between;
 }
+/* this is for the cards to have a bu tint to them */
 #card {
   background-color: rgb(83, 130, 231);
 }
+/* this gives the header a greyish tint */
 .row {
   background-color: rgba(114, 145, 185, 0.568);
 }
