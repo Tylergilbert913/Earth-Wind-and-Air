@@ -5,7 +5,7 @@ $("#search-button").on("click", function (event) {
     var city = $("#searchInput").val();
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&apikey=941abf696ec63ce79f180b076b8c17c5";
-
+// function that will search through each city anf return a current day forecast
     $.ajax({
         url: queryURL,
         method: "GET",
