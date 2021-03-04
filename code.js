@@ -62,6 +62,7 @@ $("#search-button").on("click", function (event) {
     });
 });
 
+// function for the UV index that has a buttont that will change color as the index goes up and down
 function getUVIndex(lat, lon) {
     console.log("Your lat and lon", + lat + lon);
 
@@ -84,12 +85,12 @@ function getUVIndex(lat, lon) {
             btn.addClass("btn-dangeresponse");
         }
 
-        $("#current").append(uv.append(btn));
+        $("#current .card-body").append(uv.append(btn));
     });
 };
 
 
-
+// function for 5-day forecast
 
 function fiveDay(city) {
     console.log(city);
@@ -101,7 +102,7 @@ function fiveDay(city) {
         method: "GET",
     }).then(function (response) {
 
-
+// loops through the five-day forecast, had do use 35, because I was getting a return of 40 days
         for (var i = 35; i < response.list.length; i++) {
             console.log("is this working 2:" + city)
 
@@ -113,7 +114,7 @@ function fiveDay(city) {
             var city = $("<p>").addClass("card-text").text(response.name);
             var temp = $("<p>").text("Today's temperature; " + response.list[i].main.temp_max);
             var humidity = $("<p>").text("Today's humidity: " + response.list[i].main.humidity + "%");
-
+// appends all to the card-body, then the card its self
             title.append(image, title);
             body.append(card);
             card.append(city, title, temp, humidity);

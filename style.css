@@ -3,7 +3,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   text-align: center;
   padding: 30px;
-  background-color: rgb(94, 91, 91);
+  background-color: rgba(88, 78, 78, 0.712);
   color: rgb(240, 235, 235);
 }
 #forecast {
@@ -15,4 +15,7 @@
 }
 #card {
   background-color: rgb(83, 130, 231);
+}
+.row {
+  background-color: rgba(114, 145, 185, 0.568);
 }

@@ -28,7 +28,10 @@ NONE
     
 ## Usage Information 
     
-Simply search for a city of the users liking.
+Simply search for a city of the users liking and this will be the users output:
+
+![Screenshot (181)](https://user-images.githubusercontent.com/73138234/109918310-b2124080-7c84-11eb-97ec-2858e13d8a73.png)
+
     
 ## Contributors 
     
